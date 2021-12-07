@@ -1,0 +1,57 @@
+app:
+  jwt:
+    expiration-in-ms: 86400000
+    header:
+      string: Authorization
+    secret: RandomSecretKey
+    token:
+      prefix: Bearer
+eczaneLink: http://212.154.7.250:4480/
+server:
+  port: 9291
+spring:
+  data:
+    web:
+      pageable:
+        default-page-size: 5
+        max-page-size: 100
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+    password: ${PASSWORD:*EkipEcza123*}
+    platform: postgresql
+    url: jdbc:postgresql://${DB_IP:192.168.9.4}:5432/eczane
+    username: postgres
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: ${DDL_AUTO:none}
+    properties:
+      javax:
+        persistence:
+          validation:
+            mode: none
+  mail:
+    host: smtp.gmail.com
+    password: Aa12345Bb
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          starttls:
+            enable: true
+          timeout: 5000
+          writetimeout: 5000
+        transport:
+          protocol: smtps
+    username: ekipecza1
+  servlet:
+    multipart:
+      max-file-size: 15MB
+      max-request-size: 15MB
+upload-barcode-path: barcode
+upload-docs-path: docs
+upload-path: image

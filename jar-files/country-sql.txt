@@ -1,0 +1,222 @@
+
+CREATE TABLE public.country (
+	id int8 NOT NULL,
+	"name" varchar(255) NULL,
+	CONSTRAINT country_pkey PRIMARY KEY (id)
+);
+drop table country 
+select * from country c 
+
+INSERT INTO public.country (id, "name") VALUES(1, 'Türkiye');
+INSERT INTO public.country (id, "name") VALUES(2, 'Abhazya');
+INSERT INTO public.country (id, "name") VALUES(3, 'Afganistan');
+INSERT INTO public.country (id, "name") VALUES(4, 'Almanya');
+INSERT INTO public.country (id, "name") VALUES(5, 'Amerika Birleşik Devletleri');
+INSERT INTO public.country (id, "name") VALUES(6, 'Andorra');
+INSERT INTO public.country (id, "name") VALUES(7, 'Angola');
+INSERT INTO public.country (id, "name") VALUES(8, 'Antigua ve Barbuda');
+INSERT INTO public.country (id, "name") VALUES(9, 'Arjantin');
+INSERT INTO public.country (id, "name") VALUES(10, 'Arnavutluk');
+INSERT INTO public.country (id, "name") VALUES(11, 'Avustralya');
+INSERT INTO public.country (id, "name") VALUES(12, 'Avusturya');
+INSERT INTO public.country (id, "name") VALUES(13, 'Azerbaycan');
+INSERT INTO public.country (id, "name") VALUES(14, 'Bahamalar');
+INSERT INTO public.country (id, "name") VALUES(15, 'Bahreyn');
+INSERT INTO public.country (id, "name") VALUES(16, 'Bangladeş');
+INSERT INTO public.country (id, "name") VALUES(17, 'Barbados');
+INSERT INTO public.country (id, "name") VALUES(18, 'Batı Sahra');
+INSERT INTO public.country (id, "name") VALUES(19, 'Belçika');
+INSERT INTO public.country (id, "name") VALUES(20, 'Belize');
+INSERT INTO public.country (id, "name") VALUES(21, 'Benin');
+INSERT INTO public.country (id, "name") VALUES(22, 'Beyaz Rusya');
+INSERT INTO public.country (id, "name") VALUES(23, 'Bhutan');
+INSERT INTO public.country (id, "name") VALUES(24, 'Birleşik Arap Emirlikleri');
+INSERT INTO public.country (id, "name") VALUES(25, 'Bolivya');
+INSERT INTO public.country (id, "name") VALUES(26, 'Bosna Hersek');
+INSERT INTO public.country (id, "name") VALUES(27, 'Botsvana');
+INSERT INTO public.country (id, "name") VALUES(28, 'Brezilya');
+INSERT INTO public.country (id, "name") VALUES(29, 'Brunei');
+INSERT INTO public.country (id, "name") VALUES(30, 'Bulgaristan');
+INSERT INTO public.country (id, "name") VALUES(31, 'Burkina Faso');
+INSERT INTO public.country (id, "name") VALUES(32, 'Burundi');
+INSERT INTO public.country (id, "name") VALUES(33, 'Cezayir');
+INSERT INTO public.country (id, "name") VALUES(34, 'Cibuti');
+INSERT INTO public.country (id, "name") VALUES(35, 'Çad');
+INSERT INTO public.country (id, "name") VALUES(36, 'Çek Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(37, 'Çin Halk Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(38, 'Dağlık Karabağ Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(39, 'Danimarka');
+INSERT INTO public.country (id, "name") VALUES(40, 'Doğu Timor');
+INSERT INTO public.country (id, "name") VALUES(41, 'Dominik Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(42, 'Dominika');
+INSERT INTO public.country (id, "name") VALUES(43, 'Ekvador');
+INSERT INTO public.country (id, "name") VALUES(44, 'Ekvator Ginesi');
+INSERT INTO public.country (id, "name") VALUES(45, 'El Salvador');
+INSERT INTO public.country (id, "name") VALUES(46, 'Endonezya');
+INSERT INTO public.country (id, "name") VALUES(47, 'Eritre');
+INSERT INTO public.country (id, "name") VALUES(48, 'Ermenistan');
+INSERT INTO public.country (id, "name") VALUES(49, 'Estonya');
+INSERT INTO public.country (id, "name") VALUES(50, 'Etiyopya');
+INSERT INTO public.country (id, "name") VALUES(51, 'Fas');
+INSERT INTO public.country (id, "name") VALUES(52, 'Fiji');
+INSERT INTO public.country (id, "name") VALUES(53, 'Fildişi Sahilleri');
+INSERT INTO public.country (id, "name") VALUES(54, 'Filipinler');
+INSERT INTO public.country (id, "name") VALUES(55, 'Filistin');
+INSERT INTO public.country (id, "name") VALUES(56, 'Finlandiya');
+INSERT INTO public.country (id, "name") VALUES(57, 'Fransa');
+INSERT INTO public.country (id, "name") VALUES(58, 'Gabon');
+INSERT INTO public.country (id, "name") VALUES(59, 'Gambiya');
+INSERT INTO public.country (id, "name") VALUES(60, 'Gana');
+INSERT INTO public.country (id, "name") VALUES(61, 'Gine');
+INSERT INTO public.country (id, "name") VALUES(62, 'Gine Bissau Gine Bissau Batı Afrika');
+INSERT INTO public.country (id, "name") VALUES(63, 'Grenada');
+INSERT INTO public.country (id, "name") VALUES(64, 'Guyana');
+INSERT INTO public.country (id, "name") VALUES(65, 'Guatemala');
+INSERT INTO public.country (id, "name") VALUES(66, 'Güney Afrika Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(67, 'Güney Kore');
+INSERT INTO public.country (id, "name") VALUES(68, 'Güney Osetya');
+INSERT INTO public.country (id, "name") VALUES(69, 'Güney Sudan');
+INSERT INTO public.country (id, "name") VALUES(70, 'Gürcistan');
+INSERT INTO public.country (id, "name") VALUES(71, 'Haiti');
+INSERT INTO public.country (id, "name") VALUES(72, 'Hırvatistan');
+INSERT INTO public.country (id, "name") VALUES(73, 'Hindistan');
+INSERT INTO public.country (id, "name") VALUES(74, 'Hollanda');
+INSERT INTO public.country (id, "name") VALUES(75, 'Honduras');
+INSERT INTO public.country (id, "name") VALUES(76, 'Irak');
+INSERT INTO public.country (id, "name") VALUES(77, 'İngiltere');
+INSERT INTO public.country (id, "name") VALUES(78, 'İran');
+INSERT INTO public.country (id, "name") VALUES(79, 'İrlanda');
+INSERT INTO public.country (id, "name") VALUES(80, 'İspanya');
+INSERT INTO public.country (id, "name") VALUES(81, 'İsrail');
+INSERT INTO public.country (id, "name") VALUES(82, 'İsveç');
+INSERT INTO public.country (id, "name") VALUES(83, 'İsviçre');
+INSERT INTO public.country (id, "name") VALUES(84, 'İtalya');
+INSERT INTO public.country (id, "name") VALUES(85, 'İzlanda');
+INSERT INTO public.country (id, "name") VALUES(86, 'Jamaika');
+INSERT INTO public.country (id, "name") VALUES(87, 'Japonya');
+INSERT INTO public.country (id, "name") VALUES(88, 'Kamboçya');
+INSERT INTO public.country (id, "name") VALUES(89, 'Kamerun');
+INSERT INTO public.country (id, "name") VALUES(90, 'Kanada');
+INSERT INTO public.country (id, "name") VALUES(91, 'Karadağ 91 Katar');
+INSERT INTO public.country (id, "name") VALUES(92, 'Kazakistan');
+INSERT INTO public.country (id, "name") VALUES(93, 'Kenya');
+INSERT INTO public.country (id, "name") VALUES(94, 'Kırgızistan');
+INSERT INTO public.country (id, "name") VALUES(95, 'Kıbrıs Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(96, 'Kiribati');
+INSERT INTO public.country (id, "name") VALUES(97, 'Kolombiya');
+INSERT INTO public.country (id, "name") VALUES(98, 'Komorlar');
+INSERT INTO public.country (id, "name") VALUES(99, 'Kongo');
+INSERT INTO public.country (id, "name") VALUES(100, 'Kongo Demokratik Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(101, 'Kosova');
+INSERT INTO public.country (id, "name") VALUES(102, 'Kosta Rika');
+INSERT INTO public.country (id, "name") VALUES(103, 'Kuveyt');
+INSERT INTO public.country (id, "name") VALUES(104, 'Kuzey Kıbrıs Türk Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(105, 'Kuzey Kore');
+INSERT INTO public.country (id, "name") VALUES(106, 'Küba');
+INSERT INTO public.country (id, "name") VALUES(107, 'Laos');
+INSERT INTO public.country (id, "name") VALUES(108, 'Lesotho');
+INSERT INTO public.country (id, "name") VALUES(109, 'Letonya');
+INSERT INTO public.country (id, "name") VALUES(110, 'Liberya');
+INSERT INTO public.country (id, "name") VALUES(111, 'Libya');
+INSERT INTO public.country (id, "name") VALUES(112, 'Liechtenstein');
+INSERT INTO public.country (id, "name") VALUES(113, 'Litvanya');
+INSERT INTO public.country (id, "name") VALUES(114, 'Lübnan');
+INSERT INTO public.country (id, "name") VALUES(115, 'Lüksemburg');
+INSERT INTO public.country (id, "name") VALUES(116, 'Macaristan');
+INSERT INTO public.country (id, "name") VALUES(117, 'Madagaskar');
+INSERT INTO public.country (id, "name") VALUES(118, 'Makedonya Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(119, 'Malavi');
+INSERT INTO public.country (id, "name") VALUES(120, 'Maldivler');
+INSERT INTO public.country (id, "name") VALUES(121, 'Malezya');
+INSERT INTO public.country (id, "name") VALUES(122, 'Mali');
+INSERT INTO public.country (id, "name") VALUES(123, 'Malta');
+INSERT INTO public.country (id, "name") VALUES(124, 'Marshall Adaları 125 Meksika');
+INSERT INTO public.country (id, "name") VALUES(125, 'Moldova 130 Monako 131 Moritanya 132 Moritius');
+INSERT INTO public.country (id, "name") VALUES(126, 'Mozambik');
+INSERT INTO public.country (id, "name") VALUES(127, 'Namibya 136 Nauru 137 Nepal');
+INSERT INTO public.country (id, "name") VALUES(128, 'Nikaragua');
+INSERT INTO public.country (id, "name") VALUES(129, 'Nijer');
+INSERT INTO public.country (id, "name") VALUES(130, 'Nijerya');
+INSERT INTO public.country (id, "name") VALUES(131, 'Norveç');
+INSERT INTO public.country (id, "name") VALUES(132, 'Orta Afrika Cumhuriyeti');
+INSERT INTO public.country (id, "name") VALUES(133, 'Özbekistan');
+INSERT INTO public.country (id, "name") VALUES(134, 'Pakistan');
+INSERT INTO public.country (id, "name") VALUES(135, 'Palau');
+INSERT INTO public.country (id, "name") VALUES(136, 'Panama');
+INSERT INTO public.country (id, "name") VALUES(137, 'Papua');
+INSERT INTO public.country (id, "name") VALUES(138, 'Paraguay');
+INSERT INTO public.country (id, "name") VALUES(139, 'Peru');
+INSERT INTO public.country (id, "name") VALUES(140, 'Polonya');
+INSERT INTO public.country (id, "name") VALUES(141, 'Portekiz');
+INSERT INTO public.country (id, "name") VALUES(142, 'Porto Riko');
+INSERT INTO public.country (id, "name") VALUES(143, 'Romanya');
+INSERT INTO public.country (id, "name") VALUES(144, 'Ruanda');
+INSERT INTO public.country (id, "name") VALUES(145, 'Rusya Federasyonu');
+INSERT INTO public.country (id, "name") VALUES(146, 'Saint Kitts');
+INSERT INTO public.country (id, "name") VALUES(147, 'Saint Lucia');
+INSERT INTO public.country (id, "name") VALUES(148, 'Saint Vincent ve Grenadinler');
+INSERT INTO public.country (id, "name") VALUES(149, 'Samoa');
+INSERT INTO public.country (id, "name") VALUES(150, 'San Marino');
+INSERT INTO public.country (id, "name") VALUES(151, 'Sao Tome ve Principe');
+INSERT INTO public.country (id, "name") VALUES(152, 'Sealand');
+INSERT INTO public.country (id, "name") VALUES(153, 'Senegal');
+INSERT INTO public.country (id, "name") VALUES(154, 'Seyşeller');
+INSERT INTO public.country (id, "name") VALUES(155, 'Sırbistan');
+INSERT INTO public.country (id, "name") VALUES(156, 'Sierra Leone');
+INSERT INTO public.country (id, "name") VALUES(157, 'Singapur');
+INSERT INTO public.country (id, "name") VALUES(158, 'Slovakya');
+INSERT INTO public.country (id, "name") VALUES(159, 'Slovenya');
+INSERT INTO public.country (id, "name") VALUES(160, 'Solomon Adaları');
+INSERT INTO public.country (id, "name") VALUES(161, 'Somali');
+INSERT INTO public.country (id, "name") VALUES(162, 'Somaliland');
+INSERT INTO public.country (id, "name") VALUES(163, 'Sri Lanka');
+INSERT INTO public.country (id, "name") VALUES(164, 'Sudan');
+INSERT INTO public.country (id, "name") VALUES(165, 'Surinam');
+INSERT INTO public.country (id, "name") VALUES(166, 'Suriye');
+INSERT INTO public.country (id, "name") VALUES(167, 'Suudi Arabistan');
+INSERT INTO public.country (id, "name") VALUES(168, 'Svaziland');
+INSERT INTO public.country (id, "name") VALUES(169, 'Şili');
+INSERT INTO public.country (id, "name") VALUES(170, 'Tacikistan');
+INSERT INTO public.country (id, "name") VALUES(171, 'Tanzanya');
+INSERT INTO public.country (id, "name") VALUES(172, 'Tayland');
+INSERT INTO public.country (id, "name") VALUES(173, 'Tayvan192');
+INSERT INTO public.country (id, "name") VALUES(174, 'Togo');
+INSERT INTO public.country (id, "name") VALUES(175, 'Tonga');
+INSERT INTO public.country (id, "name") VALUES(176, 'Transdinyester');
+INSERT INTO public.country (id, "name") VALUES(177, 'Trinidad ve Tobago');
+INSERT INTO public.country (id, "name") VALUES(178, 'Tunus');
+INSERT INTO public.country (id, "name") VALUES(179, 'Tuvalu');
+INSERT INTO public.country (id, "name") VALUES(180, 'Türkmenistan');
+INSERT INTO public.country (id, "name") VALUES(181, 'Uganda');
+INSERT INTO public.country (id, "name") VALUES(182, 'Ukrayna');
+INSERT INTO public.country (id, "name") VALUES(183, 'Umman');
+INSERT INTO public.country (id, "name") VALUES(184, 'Urugay');
+INSERT INTO public.country (id, "name") VALUES(185, 'Ürdün');
+INSERT INTO public.country (id, "name") VALUES(186, 'Vanuatu');
+INSERT INTO public.country (id, "name") VALUES(187, 'Vatikan');
+INSERT INTO public.country (id, "name") VALUES(188, 'Venezuela');
+INSERT INTO public.country (id, "name") VALUES(189, 'Vietnam');
+INSERT INTO public.country (id, "name") VALUES(190, 'Yemen');
+INSERT INTO public.country (id, "name") VALUES(191, 'Yeni Zelanda');
+INSERT INTO public.country (id, "name") VALUES(192, 'Yeşil Burun');
+INSERT INTO public.country (id, "name") VALUES(193, 'Yunanistan');
+INSERT INTO public.country (id, "name") VALUES(194, 'Zambiyav');
+INSERT INTO public.country (id, "name") VALUES(195, 'Zimbabve');
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+

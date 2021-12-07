@@ -1,0 +1,491 @@
+--
+--
+--INSERT INTO supplier (supplier_id,phone_number,status,supplier_address,supplier_city,supplier_district,supplier_email,supplier_fax,supplier_name,supplier_profit,supplier_type) values (1,'STOK',1,'STOK','STOK','STOK','STOK','STOK','STOK',0,'STOCK');
+--INSERT INTO supplier_supervisor (supplier_supervisor_id,email,job_title,name,phone_number,status,surname,supplier_id) values (1,'STOK','STOK','STOK','STOK',1,'STOK',1);
+--
+--
+--
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (1, 'Teklif Aşamasında', 'Müşteri için ilaçların belirlenme aşamasındadır.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (2, 'Fiyatlandırma Aşamasında', 'İlaç fiyatlarının belirlenme aşamasındadır.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (7, 'Fiyatlandırılmış Teklif Onay Aşamasında', 'Fiyatları belirlenmiş ilaçlar için müşteri ile onay sürecindedir.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (10, 'Müdür Onayında', 'Satın almanın başlaması için müdür onayı bekleniyor');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (14, 'Satın Alma Başlatmaya Hazır', 'Satın almanın başlaması için hazır');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (15, 'Satın Alma Aşamasında.', 'Yurtdışı siparişler için yurt içi satın alma sürecindedir.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (19, 'Tüm bedelin gönderilmesi', 'Yurtdışı sipariş için tüm bedelin alınması sürecindedir.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (30, 'Depo Aşamasında', 'Yurtdışı sipariş için depoda teslim alma sürecindedir.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (40, 'Kısmi Teslim Alındı', 'Yurtiçi satın alma siparişlerinde eksik ilaç varıdr.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (50, 'Tam teslim alındı', 'Yurtiçi satın almalarının hepsinin depoya girişi yapılmıştır.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (60, 'Paketleme aşamasında', 'Depoya girişi yapılan satın almalar paketlemeye hazırdır.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (65, 'Depodan Çıkışı Yapıldı', 'Müşteriye gönderilmek üzere siparişin çıkışı yapıldı.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (70, 'Lojistik aşamasında', 'Kutulanan siparişler müşteriye gönderilmeye hazırdır.');
+--INSERT INTO customer_order_status  (order_status_id, status_name, explanation) VALUES (90, 'Sipariş İptal Edildi', 'Sipariş İptal Edildi.');
+--
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(1, 'TURKIYE', 'TURKEY');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(2, 'ABHAZYA', 'ABKHAZIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(3, 'AFGANISTAN', 'AFGHANISTAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(4, 'ALMANYA', 'GERMANY');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(5, 'AMERIKA BIRLESIK DEVLETLERI', 'UNITED STATES');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(6, 'ANDORRA', 'ANDORRA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(7, 'ANGOLA', 'ANGOLA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(8, 'ANTIGUA VE BARBUDA','ANTIGUA AND BARBUDA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(9, 'ARJANTIN', 'ARGENTINA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(10, 'ARNAVUTLUK', 'ALBANIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(11, 'AVUSTRALYA', 'AUSTRALIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(12, 'AVUSTURYA', 'AUSTRIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(13, 'AZERBAYCAN', 'AZERBAIJAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(14, 'BAHAMALAR', 'BAHAMAS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(15, 'BAHREYN', 'BAHRAIN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(16, 'BANGLADEŞ', 'BANGLADESH');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(17, 'BARBADOS', 'BARBADOS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(18, 'BATI SAHRA', 'WESTERN SAHARA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(19, 'BELCIKA','BELGIUM');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(20, 'BELIZE', 'BELIZE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(21, 'BENIN', 'BENIN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(22, 'BEYAZ RUSYA', 'REPUBLIC OF BELARUS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(23, 'BUTAN KRALLIGI', 'KINGDOM OF BHUTAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(24, 'BIRLESIK ARAP EMIRLIKLERI', 'UNITED ARAB EMIRATES');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(25, 'BOLIVYA', 'BOLIVIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(26, 'BOSNA HERSEK', 'BOSNIA AND HERZEGOVINA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(27, 'BOTSVANA', 'BOTSWANA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(28, 'BREZILYA', 'BRAZIL');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(29, 'BRUNEI', 'BRUNEI');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(30, 'BULGARISTAN', 'BULGARIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(31, 'BURKINA FASO', 'BURKINA FASO');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(32, 'BURUNDI', 'BURUNDI');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(33, 'CEZAYIR', 'ALGERIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(34, 'CIBUTI', 'DJIBOUTI');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(35, 'CAD', 'CHAD');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(36, 'CEK CUMHURIYETI', 'CZECH REPUBLIC');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(37, 'CIN HALK CUMHURIYETI', 'PEOPLES REPUBLIC OF CHINA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(38, 'DAGLIK KARABAG CUMHURIYETI', 'NAGORNO-KARABAKH REPUBLIC ');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(39, 'DANIMARKA', 'DENMARK');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(40, 'DOGU TIMOR', 'EAST TIMOR');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(41, 'DOMINIK CUMHURIYETI', 'DOMINICAN REPUBLIC');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(42, 'DOMINIKA', 'DOMINICA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(43, 'EKVADOR', 'ECUADOR');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(44, 'EKVATOR GINESI', 'EQUATORIAL GUINEA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(45, 'EL SALVADOR', 'EL SALVADOR');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(46, 'ENDONEZYA', 'INDONESIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(47, 'ERITRE', 'ERITREA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(48, 'ERMENISTAN', 'ARMENIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(49, 'ESTONYA', 'ESTONIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(50, 'ETIYOPYA', 'ETHIOPIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(51, 'FAS', 'MOROCCO');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(52, 'FIJI', 'FIJI');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(53, 'FILDISI SAHILLERI', 'IVORY COAST');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(54, 'FILIPINLER', 'PHILIPPINES');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(55, 'FILISTIN', 'PALESTINE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(56, 'FINLANDIYA', 'FINLAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(57, 'FRANSA', 'FRANCE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(58, 'GABON','GABON');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(59, 'GAMBIYA', 'GAMBIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(60, 'GANA', 'GHANA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(61, 'GINE', 'GUINEA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(62, 'GINE BISSAU', 'GINE BISSAU');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(63, 'GRENADA', 'GRENADA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(64, 'GUYANA', 'GUYANA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(65, 'GUATEMALA', 'GUATEMALA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(66, 'GUNEY AFRIKA CUMHURIYETI', 'SOUTH AFRICA REPUBLIC');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(67, 'GUNEY KORE', 'SOUTH KOREA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(68, 'GUNEY OSETYA', 'SOUTH OSSETIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(69, 'GUNEY SUDAN', 'SOUTH SUDAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(70, 'GURCISTAN', 'GEORGIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(71, 'HAITI', 'HAITI');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(72, 'HIRVATISTAN', 'CROATIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(73, 'HINDISTAN', 'INDIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(74, 'HOLLANDA', 'NETHERLANDS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(75, 'HONDURAS', 'HONDURAS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(76, 'IRAK', 'IRAQ');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(77, 'INGILTERE', 'ENGLAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(78, 'IRAN', 'PERSIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(79, 'IRLANDA', 'IRELAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(80, 'ISPANYA', 'SPAIN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(81, 'ISRAIL', 'ISRAEL');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(82, 'ISVEC', 'SWEDEN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(83, 'ISVICRE', 'SWITZERLAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(84, 'ITALYA', 'ITALY');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(85, 'IZLANDA', 'ICELAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(86, 'JAMAIKA', 'JAMAICA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(87, 'JAPONYA', 'JAPAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(88, 'KAMBOCYA', 'CAMBODIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(89, 'KAMERUN', 'CAMEROON');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(90, 'KANADA', 'CANADA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(91, 'KARADAG', 'MONTENEGRO');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(92, 'KAZAKISTAN', 'KAZAKHISTAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(93, 'KENYA', 'KENYA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(94, 'KIRGIZISTAN', 'KYRGYZSTAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(95, 'KIBRIS CUMHURIYETI', 'CYPRUS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(96, 'KIRIBATI', 'KIRIBATI');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(97, 'KOLOMBIYA', 'COLOMBIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(98, 'KOMORLAR', 'COMOROS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(99, 'KONGO', 'CONGO');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(100, 'KONGO DEMOKRATIK CUMHURIYETI', 'DEMOCRATIC REBUPLIC OF THE CONGO ');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(101, 'KOSOVA', 'KOSOVA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(102, 'KOSTA RIKA', 'COSTA RICA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(103, 'KUVEYT', 'KUWAIT');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(104, 'KUZEY KIBRIS TURK CUMHURIYETI', 'TURKISH REPUBLIC OF NORTHEN CYPRUS ');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(105, 'KUZEY KORE', 'NORTH KOREA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(106, 'KUBA', 'CUBA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(107, 'LAOS', 'LAOS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(108, 'LESOTHO', 'LESOTHO');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(109, 'LETONYA', 'LATVIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(110, 'LIBERYA', 'LIBERIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(111, 'LIBYA', 'LIBYA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(112, 'LIECHTENSTEIN', 'LIECHTENSTEIN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(113, 'LITVANYA', 'LITHUANIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(114, 'LUBNAN', 'LEBANON');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(115, 'LUKSEMBURG', 'LUXEMBOURG');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(116, 'MISIR', 'EGYPT');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(117, 'MACARISTAN', 'HUNGARY');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(118, 'MADAGASKAR', 'MADAGASCAR');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(119, 'MAKEDONYA CUMHURIYETI', 'REBUPLIC OF MACEDONIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(120, 'MALAVI', 'MALAWI');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(121, 'MALDIVLER', 'MALDIVES');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(122, 'MALEZYA', 'MALAYSIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(123, 'MALI', 'MALI');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(124, 'MALTA', 'MALTA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(125, 'MARSHALL ADALARI', 'MARSHALL ISLANDS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(126, 'MOLDOVA', 'MOLDOVA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(127, 'MOZAMBIK', 'MOZAMBIQUE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(128, 'NAMIBYA', 'NAMIBIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(129, 'NIKARAGUA', 'NICARAGUA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(130, 'NIJER', 'NIGER');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(131, 'NIJERYA', 'NIGERIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(132, 'NORVEC', 'NORWAY');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(133, 'ORTA AFRIKA CUMHURIYETI', 'CENTRAL AFRICAN REPUBLIC');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(134, 'OZBEKISTAN', 'UZBEKISTAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(135, 'PAKISTAN', 'PAKISTAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(136, 'PALAU', 'PALAU');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(137, 'PANAMA', 'PANAMA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(138, 'PAPUA', 'PAPUA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(139, 'PARAGUAY', 'PARAGUAY');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(140, 'PERU', 'PERU');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(141, 'POLONYA', 'POLAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(142, 'PORTEKIZ', 'PORTUGAL');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(143, 'PORTO RIKO', 'PORTO RICO');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(144, 'ROMANYA', 'ROMANIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(145, 'RUANDA', 'RWANDA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(146, 'RUSYA FEDERASYONU', 'RUSSIAN FEDERATION');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(147, 'SAINT KITTS', 'SAINT KITTS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(148, 'SAINT LUCIA', 'SAINT LUCIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(149, 'SAINT VINCENT ve GRENADINLER', 'SAINT VINCENT AND THE GRENADINES ');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(150, 'SAMOA', 'SAMOA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(151, 'SAN MARINO', 'SAN MARINO');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(152, 'SAO TOME ve PRINCIPE', 'SAO TOME AND PRINCIPE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(153, 'SEALAND', 'SEALAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(154, 'SENEGAL', 'SENEGAL');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(155, 'SEYSELLER', 'SEYCHELLES');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(156, 'SIRBISTAN', 'SERBIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(157, 'SIERRA LEONE', 'SIERRA LEONE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(158, 'SINGAPUR', 'SINGAPORE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(159, 'SLOVAKYA', 'SLOVAKIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(160, 'SLOVENYA', 'SLOVENIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(161, 'SOLOMON ADALARI', 'SOLOMON ISLANDS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(162, 'SOMALI', 'SOMALIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(163, 'SOMALILAND', 'SOMALILAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(164, 'SRI LANKA', 'SRI LANKA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(165, 'SUDAN', 'SUDAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(166, 'SURINAM', 'SURINAME');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(167, 'SURIYE', 'SYRIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(168, 'SUUDI ARABISTAN', 'SAUDI ARABIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(169, 'SVAZILAND', 'SWAZILAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(170, 'SILI', 'CHILE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(171, 'TACIKISTAN', 'TAJIKISTAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(172, 'TANZANYA', 'TANZANIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(173, 'TAYLAND', 'THAILAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(174, 'TAYVAN', 'TAIWAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(175, 'TOGO', 'TOGO');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(176, 'TONGA', 'TONGA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(177, 'TRANSDINYESTER', 'TRANSNISTRIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(178, 'TRINAD ve TOBAGO', 'TRINAD AND TOBAGO ');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(179, 'TUNUS', 'TUNISIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(180, 'TUVALU', 'TUVALU');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(181, 'TURKMENISTAN', 'TURKMENISTAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(182, 'UGANDA', 'UGANDA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(183, 'UKRAYNA', 'UKRAINE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(184, 'UMMAN', 'OMAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(185, 'URUGAY', 'URUGUAY');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(186, 'URDUN', 'JORDAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(187, 'VANUATU', 'VANUATU');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(188, 'VATIKAN', 'VATICAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(189, 'VENEZUELA', 'VENEZUELAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(190, 'VIETNAM', 'VIETNAMASE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(191, 'YEMEN', 'YEMEN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(192, 'YENI ZELANDA', 'NEW ZELAND');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(193, 'YESIL BURUN', 'CAPE VERDE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(194, 'YUNANISTAN', 'GREECE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(195, 'ZAMBIYAV', 'ZAMBIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(196, 'ZIMBABVE', 'ZIMBABWE');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(197, 'MEKSIKA', 'MEXICAN');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(198, 'NAURU', 'NAURU');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(199, 'NEPAL', 'NEPAL');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(200, 'MONAKO','MONACO');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(201, 'MORITANYA', 'MAURITANIA');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(202, 'MORITIUS', 'MAURITIUS');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(203, 'KATAR', 'QATAR');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(204, 'BURMA (MYANMAR)', 'MYANMAR');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(205, 'HONG KONG', 'HONG KONG');
+--INSERT INTO public.country (country_id, "name", "english_name") VALUES(206, 'MAKAO', 'MACAU');
+--
+--
+--
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (1, 'Depoda', 'İlaç Depoda Beklemektedir.');
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (2, 'Paketlenme Aşamasında', 'İlaç Paketlenme Sürecindedir.');
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (3, 'İmha Edildi', 'İlaç SKT veya Bozulma Sebebiyle İmha Edilmiştir.');
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (4, 'Rezerve', 'Stoktaki İlaç Sipariş İçin Ayrılmıştır.');
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (5, 'Dışarı Satış-İade Teklif', 'Stoktaki İlaç İade İçin Teklife Sunulmuştur.');
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (10, 'Stokta', 'İlaç Stokta Beklemektedir.');
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (15, 'Dışarı Satış-İade Kesinleştirildi', 'Stoktaki İlacın İadesi Hazırlanmaktadır.');
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (20, 'Kutulama Kontrol Aşamasında', 'İlaç Kutulama İçin Kontrol Sürecindedir.');
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (30, 'Kutulama Aşamasında', 'İlaç Kutulama Sürecindedir.');
+--INSERT INTO depot_status  (depot_status_id, status_name, explanation) VALUES (90, 'Depodan Çıktı', 'İlaç Depodan Çıkış Yapmıştır.');
+--
+--INSERT INTO box_type (box_type_id, box_type) VALUES(1, 'Küçük');
+--INSERT INTO box_type (box_type_id, box_type) VALUES(2, 'Orta');
+--INSERT INTO box_type (box_type_id, box_type) VALUES(3, 'Büyük');
+--
+--
+--INSERT INTO pre_depot_status  (pre_depot_status_id, status_name, explanation) VALUES (1, 'Depoda', 'İlaç Depoya Eklendi.');
+--INSERT INTO pre_depot_status  (pre_depot_status_id, status_name, explanation) VALUES (2, 'Tarih Şartı Sağlandı', 'İlaç Tarihi ve Sipariş Tarihi Uyumlu.');
+--INSERT INTO pre_depot_status  (pre_depot_status_id, status_name, explanation) VALUES (3, 'Tarih Şartı Sağlanmadı', 'İlaç Tarihi ve Sipariş Tarihi Uyumsuz.');
+--INSERT INTO pre_depot_status  (pre_depot_status_id, status_name, explanation) VALUES (4, 'Hatalı İlaç', 'Siparişte Böyle Bir İlaç Bulunmamaktadır.');
+--INSERT INTO pre_depot_status  (pre_depot_status_id, status_name, explanation) VALUES (5, 'Depoda-Stokta Olan İlaç Karıştı', 'Depoda-Stokta Bulunan İlaç Karışmıştır, Eski Yerine İade Edilmelidir.');
+--INSERT INTO pre_depot_status  (pre_depot_status_id, status_name, explanation) VALUES (6, 'Depoda-Stokta Kaydı Bulunmayan İlaç', 'Depoda-Stokta Kaydı Bulunmayan İlaç Karışmıştır.');
+--
+--INSERT INTO pre_refund_status  (pre_refund_status_id, status_name, explanation) VALUES (1, 'Depodan çıktı', 'İlaç Okutularak Depodan Çıkış Yapıldı.');
+--INSERT INTO pre_refund_status  (pre_refund_status_id, status_name, explanation) VALUES (2, 'Tarih Şartı Sağlandı', 'İlaç Tarihi ve İade Sipariş Tarihi Uyumlu.');
+--INSERT INTO pre_refund_status  (pre_refund_status_id, status_name, explanation) VALUES (3, 'Tarih Şartı Sağlanmadı', 'İlaç Tarihi ve İade Sipariş Tarihi Uyumsuz.');
+--INSERT INTO pre_refund_status  (pre_refund_status_id, status_name, explanation) VALUES (4, 'Hatalı İlaç', 'İade Siparişinde Böyle Bir İlaç Bulunmamaktadır.');
+--INSERT INTO pre_refund_status  (pre_refund_status_id, status_name, explanation) VALUES (5, 'Depoda-Stokta Olan İlaç Karıştı', 'Depoda-Stokta Bulunan İlaç Karışmıştır, Eski Yerine İade Edilmelidir.');
+--INSERT INTO pre_refund_status  (pre_refund_status_id, status_name, explanation) VALUES (6, 'Depoda-Stokta Kaydı Bulunmayan İlaç', 'Depoda-Stokta Kaydı Bulunmayan İlaç Karışmıştır.');
+--
+--INSERT INTO purchase_status  (purchase_status_id, status_name, explanation) VALUES (5, 'İhracat Onayı Bekleniyor', 'İhracat tarafından isteğin onaylanması bekleniyor.');
+--INSERT INTO purchase_status  (purchase_status_id, status_name, explanation) VALUES (7, 'Müdür Onayı Bekleniyor', 'Şirketi zarara sokma riskinden dolayı müdür onayı bekleyen teklif var.');
+--INSERT INTO purchase_status  (purchase_status_id, status_name, explanation) VALUES (10, 'Yurtiçi Satın Almaya Başlanmadı', 'Bu ilaç için henüz sipariş verilmedi');
+--INSERT INTO purchase_status  (purchase_status_id, status_name, explanation) VALUES (20, 'Eksik Satın Alma', 'Bu ilaç için verilen satın alma miktarı eksik');
+--INSERT INTO purchase_status  (purchase_status_id, status_name, explanation) VALUES (30, 'Eksik Teslim Alma', 'Gelen satın alma siparişte eksik var. Tekrar satın alma siparişi ver!.');
+--INSERT INTO purchase_status  (purchase_status_id, status_name, explanation) VALUES (40, 'Depo Teslim Alması Bekleniyor', 'Satın alma siparişleri tamamlandı.ilaçların gelmesi bekleniyor');
+--INSERT INTO purchase_status  (purchase_status_id, status_name, explanation) VALUES (50, 'Tedarik Tamamlandı.', 'İlaçlar temin edildi gönderilmek üzere beklemede');
+--INSERT INTO purchase_status  (purchase_status_id, status_name, explanation) VALUES (60, 'Gönderildi', 'İlaç tedariği tamamlandı ve gönderildi');
+--
+--
+--INSERT INTO supplier_offer_status  (supplier_offer_status_id, status_name, explanation) VALUES (5, 'Müdür Onayı Bekleniyor', 'Bu işlem şirketi zarara sokma riskinden dolayı müdür onayı bekleniyor.');
+--INSERT INTO supplier_offer_status  (supplier_offer_status_id, status_name, explanation) VALUES (7, 'Müdür Teklifi Reddeti', 'Eczaneye yollamak istediğini teklif müdür tarafından reddedildi!');
+--INSERT INTO supplier_offer_status  (supplier_offer_status_id, status_name, explanation) VALUES (10, 'Eczane Onayı Bekleniyor', 'Eczanenin tedarik teklifi onaylaması bekleniyor.');
+--INSERT INTO supplier_offer_status  (supplier_offer_status_id, status_name, explanation) VALUES (20, 'Teklif değiştirildi', 'Eczane gönderilen teklifi değiştirdi yeni bir teklif sundu.');
+--INSERT INTO supplier_offer_status  (supplier_offer_status_id, status_name, explanation) VALUES (30, 'Reddedildi', 'Eczane verdiğiniz teklifi reddetti!');
+--INSERT INTO supplier_offer_status  (supplier_offer_status_id, status_name, explanation) VALUES (40, 'Eczane Değişikliği İptal', 'Eczanenin yaptığı değiştrilen teklif reddedildi.');
+--INSERT INTO supplier_offer_status  (supplier_offer_status_id, status_name, explanation) VALUES (45, 'Eczane Teklifi İptal', 'Eczaneye yaptığınız teklifi geri aldınız.');
+--INSERT INTO supplier_offer_status  (supplier_offer_status_id, status_name, explanation) VALUES (50, 'Kabul Edildi', 'Teklif kabul edildi ve satın alma siparişi oluşturuldu');
+--
+--
+--INSERT INTO customer_supply_status  (customer_supply_status_id, status_name, explanation) VALUES (10, 'Satın alma siparişi Beklemede', 'Verilen ilaç tedarik siparişinin gelmesi bekleniyor.');
+--INSERT INTO customer_supply_status  (customer_supply_status_id, status_name, explanation) VALUES (20, 'Eksik Gelen Sipariş', 'Sipariş eksik geldi. Siparişi yeniden oluşturun.');
+--INSERT INTO customer_supply_status  (customer_supply_status_id, status_name, explanation) VALUES (30, 'Tedarik Siparişi İptal', 'Eczane tedarik siparişini getirmedi veya gelen sipariş onaylanmadı.');
+--INSERT INTO customer_supply_status  (customer_supply_status_id, status_name, explanation) VALUES (40, 'İptal ettiniz', 'Verilen tedarik siparişi sizin tarafınızdan iptal edildi');
+--INSERT INTO customer_supply_status  (customer_supply_status_id, status_name, explanation) VALUES (45, 'Sipariş teslim alınması sürüyor', 'Siparişin bir kısmı geldi ve devamının gelmesi bekleniyor');
+--INSERT INTO customer_supply_status  (customer_supply_status_id, status_name, explanation) VALUES (50, 'Tedarik siparişi geldi', 'Verilen tedarik siparişi eksiksiz geldi.');
+--
+--
+--INSERT INTO refund_offer_status (refund_offer_status_id, status_name, explanation) VALUES (10, 'İade teklifi gönderildi', 'İade teklifi eczaneye gönderildi, eczanenin onayı bekleniyor');
+--INSERT INTO refund_offer_status (refund_offer_status_id, status_name, explanation) VALUES (20, 'İade teklifi reddedildi', 'İade teklifi eczane tarafından reddedildi');
+--INSERT INTO refund_offer_status (refund_offer_status_id, status_name, explanation) VALUES (30, 'İade teklifi iptal edildi', 'İade teklifi sizin tarafınızdan iptal edildi');
+----INSERT INTO refund_offer_status (refund_offer_status_id, status_name, explanation) VALUES (40, 'İade teklifi iptal edildi', 'İade teklifi ilaçlar başka bir sipariş için ayrıldığından iptal edildi');
+--INSERT INTO refund_offer_status (refund_offer_status_id, status_name, explanation) VALUES (50, 'İade teklifi onaylandı',  'İade teklifi eczane tarafından onaylandı');
+--
+--
+--INSERT INTO refund_status (refund_status_id, status_name, explanation) VALUES (10, 'İade işlemi başlatıldı', 'İade işlemi başlatıldı stoktaki ilaçların eczaneye iadesi bekleniyor');
+--INSERT INTO refund_status (refund_status_id, status_name, explanation) VALUES (20, 'İade reddedildi!',  'İade işlemi eczane tarafından reddedildi!');
+--INSERT INTO refund_status (refund_status_id, status_name, explanation) VALUES (30, 'İade iptal edildi', 'İade siparişi satın alma tarafından iptal edildi');
+--INSERT INTO refund_status (refund_status_id, status_name, explanation) VALUES (40, 'İade ilaçları yolda', 'İade ilaçları hazırlandı ve yola çıktı');
+--INSERT INTO refund_status (refund_status_id, status_name, explanation) VALUES (50, 'İade işlemi tamamlandı', 'İade eczane tarafından kabul edildi ve ücreti alındı');
+--
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(1, '100', '29/06/2021', 'KASA', 1, NULL, '100');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(2, '001','29/06/2021', 'KASA TL', 1, 1, '100.001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(3, '0001','29/06/2021', 'TURK LIRASI', 1, 2, '100.001.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(4, '002','29/06/2021', 'KASA USD', 1, 1, '100.002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(5, '0001','29/06/2021', 'USD', 1, 4 , '100.002.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(6, '003','29/06/2021', 'KASA EURO', 1, 1 , '100.003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(7, '0001','29/06/2021', 'EURO', 1, 6 , '100.003.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(8, '004','29/06/2021', 'KASA MANAT', 1, 1 , '100.004');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(9, '0001','29/06/2021', 'MANAT', 1, 8 , '100.004.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(10, '005','29/06/2021', 'KASA STERLIN', 1, 1 , '100.005');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(11, '0001','29/06/2021', 'STERLIN', 1, 10 , '100.005.0001');
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(12, '102', '29/06/2021', 'BANKALAR', 1, NULL, '102');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(13, '001', '29/06/2021', 'YAPI KREDI BANKASI A.S.-GIMAT TICARI SB.', 1, 12, '102.001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(14, '005', '29/06/2021', 'ISBANKASI A.S.-CETIN EMEC SB.', 1, 12, '102.005');
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(15, '108', '29/06/2021', 'DİĞER HAZIR DEĞERLER', 1, NULL, '108');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(16, '001', '29/06/2021', 'YAPI KREDI BANKASI A.S.', 1, 15, '108.001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(17, '0002', '29/06/2021', 'YAPI KREDI POS USD HS.', 1, 16, '108.001.0002');
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(18, '120', '29/06/2021', 'ALICILAR', 1, NULL, '120');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(19, '000','29/06/2021', 'TURKIYE', 1, 18, '120.000');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(20, '0052','29/06/2021', 'TAN ECZANESİ', 1, 19, '120.000.0052');
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(21, '153','29/06/2021', 'TİCARİ MALLAR', 1, NULL, '153');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(22, '010','29/06/2021', 'TİCARİ MALLAR', 1, 21, '153.010');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(23, '0001','29/06/2021', 'IHRAC KAYITLI ALISLAR', 1, 22, '153.010.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(24, '0002','29/06/2021', 'EKIP ECZA REYON', 1, 22, '153.010.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(25, '0008','29/06/2021', 'TİCARİ MALLAR %8', 1, 22, '153.010.0008');
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(26, '191','29/06/2021', 'İNDİRİLECEK KDV', 1, NULL, '191');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(27, '001','29/06/2021', 'İNDİRİLECEK KDV', 1, 26, '191.001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(28, '0001','29/06/2021', '%1 İNDİRİLECEK KDV', 1, 27, '191.001.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(29, '0002','29/06/2021', '%8 İNDİRİLECEK KDV', 1, 27, '191.001.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(30, '0018','29/06/2021', '%18 İNDİRİLECEK KDV', 1, 27, '191.001.0018');
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(31, '320','29/06/2021', 'SATICILAR', 1, NULL, '320');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(32, '000','29/06/2021', 'YURT ICI SATICILAR', 1, 31, '320.000');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(33, '0003','29/06/2021', 'ADEKA İLAÇ SANAYİ TİC.A.Ş.', 1, 32, '320.000.0003');
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(34, '391','29/06/2021', 'HESAPLANAN KDV', 1, NULL, '391');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(35, '001','29/06/2021', 'HESAPLANAN KDV', 1, 34, '391.001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(36, '0001','29/06/2021', '%1 HESAPLANAN KDV', 1, 35, '391.001.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(37, '0008','29/06/2021', '%8 HESAPLANAN KDV', 1, 35, '391.001.0008');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(38, '00018','29/06/2021', '%18 HESAPLANAN KDV', 1, 35, '391.001.0018');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(39, '020','29/06/2021', 'ALIŞTAN İADE KDV', 1, 34, '391.020');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(40, '001','29/06/2021', '%8 ALIŞTAN İADE KDV', 1, 39, '391.020.001');
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(41, '601','29/06/2021', 'YURT DIŞI SATIŞLAR', 1, NULL, '601');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(42, '001','29/06/2021', 'YURT DIŞI SATIŞLAR', 1, 41, '601.001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(43, '0000','29/06/2021', 'YURT DIŞI SATIŞLAR', 1, 42, '601.001.0000');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(44, '0001','29/06/2021', 'YURT DIŞI TRANSİT SATIŞLAR', 1, 42, '601.001.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(45, '002','29/06/2021', 'YURT DIŞI SATIŞLAR FİYAT FARKI', 1, 41, '601.002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(46, '0000','29/06/2021', 'YURT DIŞI SATIŞLAR FİYAT FARKI', 1, 45, '601.002.0000');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(47,'003', '29/06/2021', 'NAVLUN GELİRİ', 1, 41, '601.003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(48, '0000','29/06/2021', 'NAVLUN GELİRİ', 1, 47, '601.003.0000');
+--
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(49, '760','09/07/2021', 'PAZARLAMA SATIŞ VE DAĞITIM GİDERLERİ', 1, NULL, '760');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(50, '001','09/07/2021', 'AMBALAJ MALZEME KULLANIMLARI', 1, 49, '760.001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(51, '0001','09/07/2021', 'KOLİ KARTON GİDERLERİ', 1, 50, '760.001.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(52, '0002','09/07/2021', 'STREÇ FİLM GİDERLERİ VE DİĞER PLAST.AMB.', 1, 50, '760.001.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(53, '0003','09/07/2021', 'DATA LOGER ISI ÖLÇER GID.', 1, 50, '760.001.0003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(54, '0004','09/07/2021', 'PALET VE DİĞER PAKETLEME ÜRN.', 1, 50, '760.001.0004');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(55, '002','09/07/2021', 'YURT İÇİ NAKLİYE VE KARGO GİDERLERİ ', 1, 49, '760.002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(56, '0001','09/07/2021', 'NAKLİYE GİDERLERİ ', 1, 55, '760.002.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(57, '0002','09/07/2021', 'NAKLİYE GİDERLERİ ', 1, 55, '760.002.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(58, '003','09/07/2021', 'ARAÇ BAKIM VE ONARIM GİDERLERİ ', 1, 49, '760.003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(59, '0001','09/07/2021', 'ARAÇ SERVİS HİZMETLERİ ', 1, 58, '760.003.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(60, '0002','09/07/2021', 'AKARYAKIT GİDERLERİ ', 1, 58, '760.003.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(61, '0003','09/07/2021', 'ARAÇ TEMİZLİK HİZMETLERİ ', 1, 58, '760.003.0003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(62, '0004','09/07/2021', 'ARAÇ HGS GEÇİŞ BEDELLERİ ', 1, 58, '760.003.0004');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(63, '0005','09/07/2021', 'ARAÇ OTOPARK BEDELLERİ ', 1, 58, '760.003.0005');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(64, '0006','09/07/2021', 'ARAÇ YEDEK PARÇA BEDELLERİ ', 1, 58, '760.003.0006');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(65, '0007','09/07/2021', 'ARAÇ SİGORTA GİDERLERİ ', 1, 58, '760.003.0007');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(66, '0008','09/07/2021', 'ARAÇ KİRALAMA GİDERLERİ ', 1, 58, '760.003.0008');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(67, '0009','09/07/2021', 'ARAÇ MUAYENE GİDERLERİ ', 1, 58, '760.003.0009');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(68, '0010','09/07/2021', 'ARAÇ TAKİP HİZMET GİDERLERİ ', 1, 58, '760.003.0010');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(69, '004','09/07/2021', 'SEYAHAT GİDERLERİ ', 1, 49, '760.004');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(70, '0001','09/07/2021', 'YURT İÇİ OTEL VE KONAKLAMA GİDERLERİ', 1, 69, '760.004.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(71, '0003','09/07/2021', 'UÇAK VE DİĞER ULAŞIM GİDERLERİ', 1, 69, '760.004.0003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(72, '005','09/07/2021', 'TEMSİL VE AĞIRLAMA GİDERLERİ ', 1, 49, '760.005');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(73, '0001','09/07/2021', 'TEMSİL VE ORGANİZASYON GİDERLERİ ', 1, 72, '760.005.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(74, '006','09/07/2021', 'REKLAM VE PROMOSYON GİDERLERİ ', 1, 49, '760.006');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(75, '0003','09/07/2021', 'SOSYAL MEDYA İNTERNET TANITIM GİDERLERİ  ', 1, 74, '760.005.0003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(76, '007','09/07/2021', 'İHRACAT-GÜMRÜKLEME GİDERLERİ ', 1, 49, '760.007');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(77, '0001','09/07/2021', 'İHRACAT ARDİYE BEDELİ ', 1, 76, '760.007.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(78, '0002','09/07/2021', 'İHRACAT YÜKLEME BOŞALTMA GİDERLERİ ', 1, 76, '760.007.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(79, '0003','09/07/2021', 'İHRACAT TARTIM VE ELLEÇLEME GİDERLERİ ', 1, 76, '760.007.0003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(80, '0004','09/07/2021', 'İHRACAT GÜMRÜK MÜŞAVİRLİK GİDERLERİ ', 1, 76, '760.007.0004');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(81, '0005','09/07/2021', 'İHRACATÇILAR BİRLİĞİ AİDATLARI ', 1, 76, '760.007.0005');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(82, '0007','09/07/2021', 'İHRACAT NAVLUN TAŞIMA GİDERLERİ ', 1, 76, '760.007.0007');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(83, '0008','09/07/2021', 'İHRACAT KURYE VE ÖZEL KARGO GİDERLERİ ', 1, 76, '760.007.0008');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(84, '0010','09/07/2021', 'İHRACAT DİĞER ÇEŞİTLİ GİDERLER ', 1, 76, '760.007.0010');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(85, '0011','09/07/2021', 'İHRACAT GÖTÜRÜ GİDERLERİ ', 1, 76, '760.007.0011');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(86, '770','09/07/2021', 'GENEL YÖNETİM GİDERLERİ', 1, NULL, '770');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(87, '001','09/07/2021', 'PERSONEL ÜCRET GİDERLERİ', 1, 86, '770.001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(88, '0001','09/07/2021', 'BRÜT ÜCRETLER ', 1, 87, '770.001.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(89, '0002','09/07/2021', 'SGK PRİMİ İŞVEREN PAYI ', 1, 87, '770.001.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(90, '0003','09/07/2021', 'SGK İŞSİZLİK PRİMİ İŞVEREN PAYI ', 1, 87, '770.001.0003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(91, '0005','09/07/2021', 'İHBAR TAZMİNATI ', 1, 87, '770.001.0005');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(92, '0006','09/07/2021', 'KIDEM TAZMİNATI ', 1, 87, '770.001.0006');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(93, '0009','09/07/2021', 'YILLIK İZİN ÜCRET ÖDEMELERİ ', 1, 87, '770.001.0009');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(94, '002','09/07/2021', 'KİRA GİDERLERİ VE AİDAT GİDERLERİ', 1, 86, '770.002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(95, '0001','09/07/2021', 'İŞYERİ KİRA GİDERLERİ ', 1, 94, '770.002.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(96, '0002','09/07/2021', 'LOJMAN KİRA GİDERLRİ ', 1, 94, '770.002.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(97, '0003','09/07/2021', 'AİDAT GİDERLERİ ', 1, 94, '770.002.0003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(98, '003','09/07/2021', 'KIRTASİYE VE OFİS ÜRN.GİDERLERİ', 1, 86, '770.003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(99, '0001','09/07/2021', 'KIRTASİYE ÜRÜNLERİ ', 1, 98, '770.002.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(100, '0002','09/07/2021', 'OFİS ELEKTRONİK EKİPMANLAR ', 1, 98, '770.002.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(101, '0003','09/07/2021', 'MATBAA BASKI GİDERLERİ ', 1, 98, '770.002.0003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(102, '008','09/07/2021', 'YEMEK VE TEMİZLİK GİDERLERİ ', 1, 86, '770.008');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(103, '0001','09/07/2021', 'MARKET YEMEK ÜRÜNLERİ ALIMI GİD. ', 1, 102, '770.008.0001');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(104, '0002','09/07/2021', 'MARKET TEMİZLİK ÜRÜNLERİ ALIMI GİDERLERİ ', 1, 102, '770.008.0002');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(105, '0003','09/07/2021', 'DİĞER YEMEK GİDERLERİ  ', 1, 102, '770.008.0003');
+--INSERT INTO public.category (category_id, code, created_date, "name", status, category_parent_id, code_value) VALUES(106, '0004','09/07/2021', 'BEYANNAME DAMGA VERGİSİ  ', 1, 102, '770.008.0004');
+--
+--
+--
+--
+--
+--
+--INSERT INTO public.company
+--(company_id, address, city, company_fax, company_mobile_phone, company_name, company_phone, created_date, currency_type, email_address, status, tax_no, countryid, userid)
+--VALUES(nextval('sq_company'), '', 'Ankara', '', '', 'STOK', '', '01/01/2021', 'TL', '', 1, '', 1, null);
+--
+--INSERT INTO customer (customer_id ,"name", surname, city, created_date, status, companyid) VALUES (1,'STOK', 'STOK',  'STOK', CURRENT_TIMESTAMP ,1 ,1) ;
+--
+--INSERT INTO public.customer_order
+--(customer_order_id, additional_details, created_date, currency_fee, currency_type, customer_order_no, customer_order_note, delivery_terms, freight_cost_tl, lead_time, logistic_status, order_date, order_status_history, payment_terms, pre_freight_cost_tl, purchase_order_note, status, companyid, customer_id, order_status_id, user_id)
+--VALUES(nextval('sq_customer_order'), '', '01/01/2021',  1, 'TL', 'SIP-20210000001', '', '', 0, '', 0, '01/01/2021', 0, '', 0, '', 0, null, 1, 50, null);
+--
+--INSERT INTO public.drug_card
+--(drug_card_id, active_matter, after_decision_fdk_increases, atc_code, atc_name, company_gln, company_tax_no, date_of_change, drug_code, drug_company, drug_name, equivalent_code, explanation, explanation_of_all_transactions, imported_manufactured, its_information, package_quantity_size, pre_decision_fdk_increases, price_dec_req_code, price_protected_unprotected, recipe_type, reference, reference_status_code, source_country, status, type_of_change_made_in_list, unit_quantity, unit_type, validity_date, drug_vat, source_country_for_calculation, is_active)
+--VALUES(nextval('sq_drug_card'), '', '', '', '', '', '', '01/01/2021', 11111111111111, 'STOK', 'STOK', 0, '', '', '', 0, '', '', 0, '', '', '', 0, '', 2, '', '', '', '01/01/2021', 0, 'STOK', true);
+--
+--INSERT INTO public.invoice_type(invoice_type_id, invoice_type, status) VALUES(1, 'TİCARİ FATURA', 0);
+--INSERT INTO public.invoice_type(invoice_type_id, invoice_type, status) VALUES(2, 'HİZMET FATURASI', 0);
+--INSERT INTO public.invoice_type(invoice_type_id, invoice_type, status) VALUES(3, 'TEVKİFAT FATURASI', 0);
+--
+--INSERT INTO final_receipt_status (final_receipt_status_id, status_name, explanation)  VALUES (1, 'Depo Aşamasında', 'Teslim almada muhasebe fişi oluşturuldu ve muhasebeye gönderilmeye hazır');
+--INSERT INTO final_receipt_status (final_receipt_status_id, status_name, explanation)  VALUES (10, 'Muhasebe Aşamasında', 'Muhasebe fişi muhasebenin onayını bekliyor');
+--INSERT INTO final_receipt_status (final_receipt_status_id, status_name, explanation)  VALUES (20, 'Müdür Onayında', 'Muhasebe fişi müdür onayında');
+--INSERT INTO final_receipt_status (final_receipt_status_id, status_name, explanation)  VALUES (25, 'Fatura Oluşmaya Hazır', 'Müdür onayından döndü, muhasebe tarafından fatura oluşturulmaya hazır');
+--INSERT INTO final_receipt_status (final_receipt_status_id, status_name, explanation)  VALUES (30, 'Muhasebe Tarafından Onaylandı', 'Muhasebe fişi irsaliyeye dönmeye hazır');
+--INSERT INTO final_receipt_status (final_receipt_status_id, status_name, explanation)  VALUES (40, 'İrsaliye oluştu', 'İrsaliye oluşturuldu, fatura oluşması bekleniyor');
+--
+--INSERT INTO invoice_status (invoice_status_id, status_name, explanation) VALUES (10, 'Fatura Oluşturuldu', 'Fatura oluşturuldu, ödemesi bekleniyor');
+--INSERT INTO invoice_status (invoice_status_id, status_name, explanation) VALUES (40, 'Fatura Kapatıldı', 'Ödemesi alındı veya yapıldı, fatura işleme kapatıldı');
+--
+--INSERT INTO receipt_status (receipt_status_id, status_name, explanation)  VALUES (1, 'Depo Aşamasında', 'Teslim almada fiş oluşturuldu ve admine gönderilmeye hazır');
+--INSERT INTO receipt_status (receipt_status_id, status_name, explanation)  VALUES (10, 'Admin Onayında', 'Fiş admin onayını bekliyor');
+--INSERT INTO receipt_status (receipt_status_id, status_name, explanation)  VALUES (20, 'Müdür Onayında', 'Fiş müdür onayını bekliyor');
+--INSERT INTO receipt_status (receipt_status_id, status_name, explanation)  VALUES (30, 'Muhasebe Aşamasında', 'Müdür tarafından onaylandı ve muhasebede fatura oluşturulmaya hazır');
+--INSERT INTO receipt_status (receipt_status_id, status_name, explanation)  VALUES (40, 'Fatura Girişi Yapıldı', 'Muhasebe tarafından sisteme fatura girişi yapıldı');
+--
+--
+--
+--CREATE INDEX index_box_drug_list ON box_drug_list USING btree (depot_id);
+--CREATE INDEX index_purchase_order_drugs_id ON customer_order_drugs USING btree (purchase_order_drugs_id);
+--CREATE INDEX index_drug_card ON drug_card USING btree (drug_name);
+--CREATE INDEX index_small_box_id ON small_box USING btree (small_box_id);
+--CREATE INDEX index_small_box_no ON small_box USING btree (small_box_no);
+--CREATE INDEX index_box_id ON box USING btree (box_id);
+--CREATE INDEX index_company ON company USING btree (company_id);
+--CREATE INDEX index_customer ON customer USING btree (customer_id);
+--CREATE INDEX index_customer_order ON customer_order USING btree (customer_order_id);
+--CREATE INDEX index_customer_order_drugs ON customer_order_drugs USING btree (customer_order_drug_id);
+--CREATE INDEX index_depot_status_id ON depot USING btree (depot_status_id);
+--CREATE INDEX index_pre_depot_cso_id ON pre_depot USING btree (customer_supply_order_id);
+--CREATE INDEX index_price_drug_card_id ON price USING btree (drug_card_id);
+--CREATE INDEX index_discount_drug_card_id ON discount USING btree (drug_card_id);
+--
+--
+---- elle eklenebilir dikkat ediniz..
+--INSERT INTO checking_card
+--(checking_card_id, address, checking_card_name, city, created_at, email, fax_number, phone_number, sales_representative, tax_identification_number, tax_office, "type", countryid, userid, company_id, customer_id, supplier_id)
+--VALUES(1, 'Ostim, 1148. Sk. No: 32/C D: 3, 06374 Yenimahalle/Ankara', 'Ekip Ecza Deposu San. Tic. AŞ.', 'Ankara', '2021-03-29 11:25:35', 'info@ekippharma.com', '90 (312) 473 73 13', '90 (312) 473 83 23',null , 3290643182, 'OSTİM', 'OTHER', 1, null, null, null, null);
+--INSERT INTO checking_card
+--(checking_card_id, address, checking_card_name, city, created_at, email, fax_number, phone_number, sales_representative, tax_identification_number, tax_office, "type", countryid, userid, company_id, customer_id, supplier_id)
+--VALUES(2, 'Ostim, 1148. Sk. No: 32/C D: 3, 06374 Yenimahalle/Ankara', 'Liva', 'Ankara', '2021-03-29 11:25:35', 'info@ekippharma.com', '90 (312) 473 73 13', '90 (312) 473 83 23',null , 3290643182, 'OSTİM', 'OTHER', 1, null, null, null, null);
+--
+----Firma bilgileri muhasebede kullanılmak için
+--INSERT into other_company (other_company_id, created_date, other_company_name, status) VALUES(1, '01/01/2021', 'Ekip Pharma', 1);
+--INSERT into other_company (other_company_id, created_date, other_company_name, status) VALUES(2, '01/01/2021', 'Liva Pharma', 1);
+--INSERT into other_company (other_company_id, created_date, other_company_name, status) VALUES(3, '01/01/2021', 'Ex-Im Pharma', 1);
+--
+--
+--

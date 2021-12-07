@@ -1,0 +1,28 @@
+admin şifresi : $2a$10$y3zvCuUDreSAa5.t7xqqyO/HPwFAdkf3kzYyh9SHn0x.5TC4VncxK
+şifre : admin123
+// 1 numaralı admin için yapılacaktır. 1 numara admindir.
+
+
+
+
+application.properties      - -------- --- 
+spring.datasource.url=jdbc:postgresql://192.168.4.173:5432/eczane
+spring.datasource.password=postgres
+
+
+globalConstant.js   - -------- --- 
+export const BACKEND_BASED_LINK = "http://192.168.9.4:8500";
+
+
+
+package.json      - -------- --- 
+"scripts": {
+	 "test": "react-scripts test --env=jsdom",
+	...
+	"proxy": "http://192.168.9.4:3000"
+},
+
+
+.env.local      - -------- --- 
+PORT=3000
+HOST=192.168.9.4

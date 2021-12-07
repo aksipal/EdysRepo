@@ -1,0 +1,368 @@
+.env.local (D:\remoteRepo\src\main\resources\frontend)
+	PORT=3000
+	HOST=192.168.9.4
+
+.env.local (D:\remoteRepo\src\main\resources\pharmacy-module)
+	PORT=4000
+	HOST=192.168.9.4
+
+GlobalConstant (D:\remoteRepo\src\main\resources\frontend\src\constant)
+	// export const BACKEND_BASED_LINK = "http://localhost:8500";          // local
+	export const BACKEND_BASED_LINK = "http://192.168.9.4:8500";   // product�on
+	export const BACKEND_API_LINK = BACKEND_BASED_LINK+"/api";
+	export const BACKEND_IMAGE_LINK = BACKEND_BASED_LINK+"/image";
+	export const BACKEND_BARCODE_LINK = BACKEND_IMAGE_LINK+"/barcode/";
+	export const BACKEND_SHOW_DOCUMENT_LINK = BACKEND_BASED_LINK+"/show-document";
+
+GlobalConstant (D:\remoteRepo\src\main\resources\pharmacy-module\src\constant)
+	// export const BACKEND_BASED_LINK = "http://localhost:8500";          // local
+	export const BACKEND_BASED_LINK = "http://212.154.7.250:8500";   // product�on
+	export const BACKEND_API_LINK = BACKEND_BASED_LINK+"/api";
+	export const BACKEND_IMAGE_LINK = BACKEND_BASED_LINK+"/image";
+	export const BACKEND_BARCODE_LINK = BACKEND_IMAGE_LINK+"/barcode/";
+	export const BACKEND_SHOW_DOCUMENT_LINK = BACKEND_BASED_LINK+"/show-document";
+
+package.json (D:\remoteRepo\src\main\resources\frontend)
+	{
+		"name": "frontend",
+		"version": "0.1.0",
+		"private": true,
+		"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.32",
+		"@fortawesome/free-solid-svg-icons": "^5.15.1",
+		"@fortawesome/react-fontawesome": "^0.1.12",
+		"@material-ui/core": "^4.11.1",
+		"@material-ui/lab": "^4.0.0-alpha.56",
+		"alertifyjs": "^1.13.1",
+		"axios": "^0.21.1",
+		"bootstrap": "^4.5.3",
+		"font-awesome": "^4.7.0",
+		"jquery": "^3.5.1",
+		"mdbreact": "^4.6.1",
+		"moment": "^2.29.1",
+		"node-sass": "^4.14.1",
+		"react": "^16.14.0",
+		"react-barcode": "^1.4.0",
+		"react-burger-menu": "^2.9.0",
+		"react-chartjs-2": "^2.11.1",
+		"react-datepicker": "^3.3.0",
+		"react-dom": "^16.14.0",
+		"react-fontawesome": "^1.7.1",
+		"react-icons": "^3.11.0",
+		"react-moment": "^1.0.0",
+		"react-redux": "^7.2.1",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "^4.0.3",
+		"react-select": "^3.1.1",
+		"reactstrap": "^8.6.0",
+		"redux": "^4.0.5",
+		"redux-thunk": "^2.3.0",
+		"secure-ls": "^1.2.6"
+		},
+		"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject",
+		"proxy": "http://192.168.9.4:3000"
+		},
+		"eslintConfig": {
+		"extends": "react-app"
+		},
+		"browserslist": {
+		"production": [
+		  ">0.2%",
+		  "not dead",
+		  "not op_mini all"
+		],
+		"development": [
+		  "last 1 chrome version",
+		  "last 1 firefox version",
+		  "last 1 safari version"
+		]
+		}
+	}
+
+
+package.json (D:\remoteRepo\src\main\resources\pharmacy-module)
+	{
+	  "name": "frontend",
+	  "version": "0.1.0",
+	  "private": true,
+	  "dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.32",
+		"@fortawesome/free-solid-svg-icons": "^5.15.1",
+		"@fortawesome/react-fontawesome": "^0.1.12",
+		"@material-ui/core": "^4.11.1",
+		"@material-ui/lab": "^4.0.0-alpha.56",
+		"alertifyjs": "^1.13.1",
+		"axios": "^0.21.1",
+		"bootstrap": "^4.5.3",
+		"font-awesome": "^4.7.0",
+		"jquery": "^3.5.1",
+		"mdbreact": "^4.6.1",
+		"moment": "^2.29.1",
+		"node-sass": "^4.14.1",
+		"react": "^16.14.0",
+		"react-barcode": "^1.4.0",
+		"react-burger-menu": "^2.9.0",
+		"react-chartjs-2": "^2.11.1",
+		"react-datepicker": "^3.3.0",
+		"react-dom": "^16.14.0",
+		"react-fontawesome": "^1.7.1",
+		"react-icons": "^3.11.0",
+		"react-moment": "^1.0.0",
+		"react-redux": "^7.2.1",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "^3.4.4",
+		"react-select": "^3.1.1",
+		"reactstrap": "^8.6.0",
+		"redux": "^4.0.5",
+		"redux-thunk": "^2.3.0",
+		"secure-ls": "^1.2.6"
+	  },
+	  "scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+	  },
+	  "eslintConfig": {
+		"extends": "react-app"
+	  },
+	  "browserslist": {
+		"production": [
+		  ">0.2%",
+		  "not dead",
+		  "not op_mini all"
+		],
+		"development": [
+		  "last 1 chrome version",
+		  "last 1 firefox version",
+		  "last 1 safari version"
+		]
+	  }
+	}
+
+
+package.production.json (D:\remoteRepo\src\main\resources\pharmacy-module)
+	{
+	  "name": "frontend",
+	  "version": "0.1.0",
+	  "private": true,
+	  "dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.32",
+		"@fortawesome/free-solid-svg-icons": "^5.15.1",
+		"@fortawesome/react-fontawesome": "^0.1.12",
+		"@material-ui/core": "^4.11.1",
+		"@material-ui/lab": "^4.0.0-alpha.56",
+		"alertifyjs": "^1.13.1",
+		"axios": "^0.21.1",
+		"bootstrap": "^4.5.3",
+		"font-awesome": "^4.7.0",
+		"jquery": "^3.5.1",
+		"mdbreact": "^5.0.1",
+		"moment": "^2.29.1",
+		"node-sass": "^4.14.1",
+		"react": "^16.14.0",
+		"react-barcode": "^1.4.0",
+		"react-burger-menu": "^2.9.0",
+		"react-datepicker": "^3.3.0",
+		"react-dom": "^16.14.0",
+		"react-fontawesome": "^1.7.1",
+		"react-icons": "^3.11.0",
+		"react-moment": "^1.0.0",
+		"react-redux": "^7.2.1",
+		"react-router-dom": "^5.2.0",
+		"react-scripts": "^3.4.4",
+		"react-select": "^3.1.1",
+		"reactstrap": "^8.6.0",
+		"redux": "^4.0.5",
+		"redux-thunk": "^2.3.0",
+		"secure-ls": "^1.2.6"
+	  },
+	  "scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test --env=jsdom",
+		"eject": "react-scripts eject"
+		
+	  },
+	  "eslintConfig": {
+		"extends": "react-app"
+	  },
+	  "browserslist": {
+		"production": [
+		  ">0.2%",
+		  "not dead",
+		  "not op_mini all"
+		],
+		"development": [
+		  "last 1 chrome version",
+		  "last 1 firefox version",
+		  "last 1 safari version"
+		]
+	  }
+	}
+
+application.yml (D:\remoteRepo\src\main\resources)
+
+	app:
+	  jwt:
+		expiration-in-ms: 86400000
+		header:
+		  string: Authorization
+		secret: RandomSecretKey
+		token:
+		  prefix: Bearer
+	eczaneLink: http://212.154.7.250:4480/
+	server:
+	  port: 8500
+	spring:
+	  data:
+		web:
+		  pageable:
+			default-page-size: 5
+			max-page-size: 100
+	  datasource:
+		driver-class-name: org.postgresql.Driver
+		initialization-mode: always
+		password: ${PASSWORD:*EkipEcza123*}
+		platform: postgresql
+		url: jdbc:postgresql://${DB_IP:192.168.9.4}:5432/eczane
+		username: postgres
+	  jpa:
+		database-platform: org.hibernate.dialect.PostgreSQLDialect
+		generate-ddl: true
+		hibernate:
+		  ddl-auto: ${DDL_AUTO:none}
+		properties:
+		  javax:
+			persistence:
+			  validation:
+				mode: none
+	  mail:
+		host: smtp.gmail.com
+		password: Aa12345Bb
+		port: 587
+		properties:
+		  mail:
+			smtp:
+			  auth: true
+			  connectiontimeout: 5000
+			  starttls:
+				enable: true
+			  timeout: 5000
+			  writetimeout: 5000
+			transport:
+			  protocol: smtps
+		username: ekipecza1
+	  servlet:
+		multipart:
+		  max-file-size: 15MB
+		  max-request-size: 15MB
+	upload-barcode-path: barcode
+	upload-docs-path: docs
+	upload-path: image
+
+application.properties (D:\remoteRepo\src\main\resources)
+	#server.port =8500
+	#
+	#
+	## product�on
+	#spring.datasource.url=jdbc:postgresql://192.168.9.4:5432/eczane
+	#spring.datasource.password=*EkipEcza123*
+	#spring.jpa.hibernate.ddl-auto=none
+	#
+	## team
+	##spring.datasource.url=jdbc:postgresql://192.168.4.64:5432/eczane
+	##spring.datasource.password=postgres
+	##spring.jpa.hibernate.ddl-auto=none
+	#
+	## local
+	##spring.datasource.url=jdbc:postgresql://localhost:5432/eczane
+	##spring.datasource.password=celal371
+	##spring.jpa.hibernate.ddl-auto=update
+	#
+	#
+	#spring.datasource.username=postgres
+	#spring.datasource.driver-class-name= org.postgresql.Driver
+	#spring.jpa.generate-ddl=true
+	#spring.jpa.properties.javax.persistence.validation.mode=none
+	#spring.jpa.database-platform= org.hibernate.dialect.PostgreSQLDialect
+	#
+	#spring.datasource.initialization-mode=always
+	#spring.datasource.platform=postgresql
+	#
+	#spring.data.web.pageable.default-page-size=5
+	#spring.data.web.pageable.max-page-size=100
+	#
+	##upload-path= storage-production-picture
+	##spring.datasource.data=classpath:script1.sql, classpath:script2.sql
+	#
+	#spring.servlet.multipart.max-file-size = 15MB
+	#spring.servlet.multipart.max-request-size = 15MB
+	#
+	#
+	#
+	#upload-path= image
+	#upload-barcode-path = barcode
+	#upload-docs-path = docs
+	##jwt
+	#app.jwt.secret=RandomSecretKey
+	#
+	##1 day
+	#app.jwt.expiration-in-ms=86400000
+	#app.jwt.token.prefix=Bearer
+	#app.jwt.header.string=Authorization
+	#
+	##ekipecza1@gmail.com
+	##Aa12345Bb
+	##sptestm@gmail.com
+	##ViaBilgisayar
+	#
+	##Mail ayarlar�
+	#spring.mail.host=smtp.gmail.com
+	#spring.mail.port=587
+	#spring.mail.username=ekipecza1
+	#spring.mail.password=Aa12345Bb
+	#
+	#
+	## Eczane module link
+	#eczaneLink = http://212.154.7.250:4480/
+	#
+	## Other properties
+	#spring.mail.properties.mail.smtp.auth=true
+	#spring.mail.properties.mail.smtp.connectiontimeout=5000
+	#spring.mail.properties.mail.smtp.timeout=5000
+	#spring.mail.properties.mail.smtp.writetimeout=5000
+	#spring.mail.properties.mail.transport.protocol=smtps
+	## TLS , port 587
+	#spring.mail.properties.mail.smtp.starttls.enable=true
+	#
+	## SSL, post 465
+	##spring.mail.properties.mail.smtp.socketFactory.port = 465
+	##spring.mail.properties.mail.smtp.socketFactory.class = javax.net.ssl.SSLSocketFactory
+
+kamera veritabanını locale açmak için
+
+D:\PostgreSQL\12\data\pg_hba.conf
+81	# TYPE  DATABASE        USER    ADDRESS                 METHOD
+82	host    eczane		all	192.168.9.4/24		md5
+
+Sunucu kullanıcı adı : Administrator
+Sunucu Parolası : Aa123456
+
+tüm yazılımlar d sürücüsünde
+
+eski java = D:\Java\jdk-11.0.9
+yeni java = D:\Java\jdk-1.8u202
+Node.js = 14.15.4 (x64) and npm.
+
+\\192.168.9.4\ekipeczapro
+!! gerek kalmadı ; paylaşım kullanıcı adı ekipeczapro   parolası : Ekip2021!
+
+sql
+ip: 192.168.9.4
+kullanıcı postgres
+parola *EkipEcza123*
