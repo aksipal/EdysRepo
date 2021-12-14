@@ -231,4 +231,11 @@ public class ShowDocumentApi {
         return ResponseEntity.ok(bytes);
     }
 
+    @GetMapping(value = "/sample-pts-excel/{fileName}", produces = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    public ResponseEntity<byte[]> samplePtsExcel(@PathVariable String fileName) throws IOException {
+        byte[] bytes = Files.readAllBytes(Paths.get(("docs/"+fileName+".xlsx")));
+        return ResponseEntity.ok(bytes);
+
+    }
+
 }
