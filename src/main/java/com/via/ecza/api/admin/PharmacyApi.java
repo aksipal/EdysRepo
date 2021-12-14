@@ -15,8 +15,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.text.ParseException;
 import java.util.List;
 
@@ -172,5 +175,28 @@ public class PharmacyApi {
     @GetMapping("/pharmacy-total-return-drugs")
     public int getPharmacyTotalReturnDrugs(@RequestHeader("Authorization") String authHeader ) throws NotFoundException {
         return pharmacyOrderService.getPharmacyTotalReturnDrugs(authHeader);
+    }
+
+    @PostMapping("/uploadfile")
+    public synchronized String uploadSingleFile (@RequestHeader("Authorization") String authHeader,@RequestParam("file") MultipartFile file) throws Exception {
+        File convertFile=new File("docs/pts_excel.xlsx");
+        convertFile.createNewFile();
+        FileOutputStream fout=new FileOutputStream(convertFile);
+        fout.write(file.getBytes());
+        fout.close();
+        //Dosyada okunarak vertabanına kayıt ekleniyor
+        String resultExplanation=null;
+
+        Boolean result=pharmacyOrderService.UpdateFromExcel(authHeader,"pts_excel");
+        if(result==true){
+            // System.out.println("Güncelleme İşlemi Tamamlandı");
+            resultExplanation="Yükleme İşlemi Tamamlandı";
+        }else{
+            // System.out.println("Güncelleme İşleminde Hata Oluştu.");
+            resultExplanation="Yükleme İşleminde Hata Oluştu.";
+        }
+
+        return resultExplanation;
+
     }
 }

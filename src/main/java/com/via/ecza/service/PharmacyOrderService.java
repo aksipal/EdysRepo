@@ -5,6 +5,10 @@ import com.via.ecza.dto.*;
 import com.via.ecza.entity.*;
 import com.via.ecza.repo.*;
 import javassist.NotFoundException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -50,6 +55,8 @@ public class PharmacyOrderService {
     private CustomerSupplyStatusRepository customerSupplyStatusRepository;
     @Autowired
     private OtherCompanyRepository otherCompanyRepository;
+    @Autowired
+    private PtsInformationRepository ptsInformationRepository;
 
     Date createdAt = new Date(System.currentTimeMillis());
 
@@ -561,5 +568,215 @@ if(dtoo.getOtherCompanyId()!=null){
         return orderCount;
 
     }
+
+    public Boolean UpdateFromExcel(String authHeader,String fileName) throws Exception {
+        try {
+            User user = controlService.getUserFromToken(authHeader);
+
+
+            HashMap<Integer, PtsInformation> newMap = readPtsExcel(fileName);
+
+            if (newMap.size() <= 0) {
+                throw new Exception("Pts Excel Okunamadı !");
+            }
+
+            newMap.keySet().stream().forEach(x -> {
+                try {
+                    savePtsInfo(newMap.get(x));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return true;
+    }
+
+    public HashMap<Integer, PtsInformation> readPtsExcel(String fileName) throws Exception {
+        int cellNumber = 0;
+
+        try {
+
+
+            InputStream file = new FileInputStream(new File("docs/" + fileName + ".xlsx"));
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+
+
+            // Excel Dosyasının Hangi Sayfası İle Çalışacağımızı Seçelim.
+            XSSFSheet sheet = workbook.getSheetAt(0);
+            // Belirledigimiz sayfa icerisinde tum satirlari tek tek dolasacak iterator nesnesi
+            Iterator rowIterator = sheet.iterator();
+            Row row = (Row) rowIterator.next();       //ilk satır başlık olduğu için geçildi
+
+
+
+            int counter = 0;
+
+            String boxBarcodeFromExcel=null;
+
+
+            // Okunacak Satir Oldugu Surece
+            HashMap<Integer, PtsInformation> yeniMap = new HashMap<>();
+
+            while (rowIterator.hasNext()) {
+                cellNumber = 0;//yeni satıra geçince hücre sayısı baştan başlıyor
+                // Excel içerisindeki satiri temsil eden nesne
+                row = (Row) rowIterator.next();
+                // Her bir satir icin tum hucreleri dolasacak iterator nesnesi
+                Iterator cellIterator = row.cellIterator();
+
+                PtsInformationDto ptsInfo = new PtsInformationDto(null,null,null,0,new Date());
+                counter++;
+
+
+                while (cellIterator.hasNext()) {
+                    cellNumber++;
+                    // Excel icerisindeki hucreyi temsil eden nesne
+                    Cell cell = (Cell) cellIterator.next();
+
+
+                    switch (cellNumber) {
+                        case 1:
+                            switch (cell.getCellType()) {
+                                case STRING:
+                                    ptsInfo.setBoxBarcode(cell.getStringCellValue().trim());
+                                    break;
+
+                                case BLANK:
+                                    //System.out.println("Alan Boş");
+                                    break;
+
+                                case NUMERIC:
+                                    ptsInfo.setBoxBarcode(String.valueOf((long) cell.getNumericCellValue()).trim());
+                                    break;
+                            }
+
+                            break;
+                        case 2:
+                            switch (cell.getCellType()) {
+                                case STRING:
+                                    ptsInfo.setDrugQrCode(cell.getStringCellValue().trim());
+                                    break;
+
+                                case BLANK:
+                                    // System.out.println("Alan Boş");
+                                    break;
+
+                                case NUMERIC:
+                                    ptsInfo.setDrugQrCode(String.valueOf(cell.getNumericCellValue()).trim());
+                                    break;
+                            }
+
+                            break;
+                    }
+
+                }
+
+
+                if(ptsInfo.getBoxBarcode()!=null && ptsInfo.getDrugQrCode()!=null && ptsInfo.getBoxBarcode().length()>0 && ptsInfo.getDrugQrCode().length()>0 && ptsInfo.getBoxBarcode().equals(ptsInfo.getDrugQrCode())){
+                    boxBarcodeFromExcel=ptsInfo.getBoxBarcode();
+                    if(ptsInformationRepository.qrCodeListFromBarcode(boxBarcodeFromExcel)>0){
+                        //okunan barkoda ait önceden kayıt varsa statusu 1 yapılır
+                        ptsInformationRepository.updatePreviousBoxBarcodeStatusTo1(boxBarcodeFromExcel.trim());
+                    }
+                }else if(boxBarcodeFromExcel!=null && ptsInfo.getBoxBarcode()!=null && ptsInfo.getDrugQrCode()!=null && ptsInfo.getBoxBarcode().length()>0 && ptsInfo.getDrugQrCode().length()>0 && !ptsInfo.getBoxBarcode().equals(ptsInfo.getDrugQrCode())){
+                    ptsInfo.setDrugQrCode(editQrCode(ptsInfo.getDrugQrCode()));
+                    ptsInfo.setBoxBarcode(boxBarcodeFromExcel);
+                    yeniMap.put(counter,(mapper.map(ptsInfo, PtsInformation.class)));
+                }
+            }
+
+
+            // yeniMap.keySet().stream().forEach(x -> System.out.println(x+"--"+yeniMap.get(x).getDrugQrCode()+"--"+yeniMap.get(x).getBoxBarcode()));
+            file.close();
+            workbook.close();
+
+            return yeniMap;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+        return null;
+
+
+    }
+
+    public static String editQrCode(String qrCode) throws Exception {
+        //karekoda & ayracı ekleme
+        String finalQrcode = "";
+        StringBuilder barcode = new StringBuilder();
+        StringBuilder serialNo = new StringBuilder();
+        StringBuilder restOfQrCode = new StringBuilder();
+        int expDateStartIndex = 0;
+        qrCode = qrCode.trim();
+        //İlaç Barkod Kontrolü
+        if (qrCode.length() > 29) {
+            if (qrCode.charAt(0) == '0' && qrCode.charAt(1) == '1') {
+                barcode.append(qrCode.substring(0, 16)); // 01 dahil edildi.
+            }
+
+            //İlaç Seri Numarası Kontrolü
+            if (qrCode.charAt(16) == '2' && qrCode.charAt(17) == '1') {
+                String expDate = "";
+
+                // 19   20   21 22 23 24 25 26
+                expDateStartIndex = qrCode.indexOf("17", 18);
+
+                if (expDateStartIndex > 0  /* && partiNoStartIndex>0*/) {
+
+                    // 17AABBCC10 ile oluşan bölumdekı 17 karakterındekı 1 in index numarasını arıyor.
+                    expDateStartIndex = getIndexFromQrcodeFor17(expDateStartIndex, qrCode);
+                    // 21 dahil edildi.
+                    serialNo.append(qrCode.substring(16, expDateStartIndex));
+                    serialNo.append("&");
+                    // 17 dahil edildi.
+                    restOfQrCode.append(qrCode.substring(expDateStartIndex));
+                    finalQrcode = barcode.toString() + serialNo.toString() + restOfQrCode.toString();
+
+
+
+                } else {
+                    throw new Exception("karekod okumada hata oluştu !");
+                }
+            }
+        }
+
+        return finalQrcode;
+    }
+
+    private static int getIndexFromQrcodeFor17(int expDateStartIndex, String qrCode) {
+
+
+        if (qrCode.substring(expDateStartIndex, expDateStartIndex + 2).matches("[0-9]+")) {
+            int preDateCharachter = Integer.valueOf(qrCode.substring(expDateStartIndex, expDateStartIndex + 2));
+            int partiNo = Integer.valueOf(qrCode.substring(expDateStartIndex + 8, expDateStartIndex + 10));
+            if (preDateCharachter == 17 && partiNo == 10) {
+                return expDateStartIndex;
+            } else {
+                return getIndexFromQrcodeFor17(++expDateStartIndex, qrCode);
+            }
+        }else{
+            return getIndexFromQrcodeFor17(++expDateStartIndex, qrCode);
+        }
+    }
+
+    public PtsInformation savePtsInfo(PtsInformation dto) throws Exception {
+
+        PtsInformation pts=null;
+        try {
+            pts= ptsInformationRepository.save(dto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return pts;
+    }
+
 
 }
