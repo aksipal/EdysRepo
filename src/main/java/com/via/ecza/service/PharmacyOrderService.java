@@ -752,17 +752,19 @@ if(dtoo.getOtherCompanyId()!=null){
     }
 
     private static int getIndexFromQrcodeFor17(int expDateStartIndex, String qrCode) {
-
-
-        if (qrCode.substring(expDateStartIndex, expDateStartIndex + 2).matches("[0-9]+")) {
+        //tarih alanı komple sayısal ise ayraçta dahil -->17201130
+        if (qrCode.substring(expDateStartIndex, expDateStartIndex + 8).matches("[0-9]+")) {
             int preDateCharachter = Integer.valueOf(qrCode.substring(expDateStartIndex, expDateStartIndex + 2));
             int partiNo = Integer.valueOf(qrCode.substring(expDateStartIndex + 8, expDateStartIndex + 10));
-            if (preDateCharachter == 17 && partiNo == 10) {
+            int month =Integer.valueOf(qrCode.substring(expDateStartIndex + 4, expDateStartIndex + 6));
+            int day =Integer.valueOf(qrCode.substring(expDateStartIndex + 6, expDateStartIndex + 8));
+
+            if (preDateCharachter == 17 && partiNo == 10 && month>=1 && month<=12 && day>=1 && day<=31) {
                 return expDateStartIndex;
             } else {
                 return getIndexFromQrcodeFor17(++expDateStartIndex, qrCode);
             }
-        }else{
+        } else {
             return getIndexFromQrcodeFor17(++expDateStartIndex, qrCode);
         }
     }
