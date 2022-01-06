@@ -61,7 +61,7 @@ public class PharmacyOfferService {
             createSqlQuery.append("and so.drug_card_id=" + dto.getDrugCardId() + " ");
         }
 
-        createSqlQuery.append("and so.supplier_offer_id ASC");
+        createSqlQuery.append("order by so.supplier_offer_id ASC");
 
         List<Object> list = entityManager.createNativeQuery(createSqlQuery.toString(), SupplierOffer.class).getResultList();
 
