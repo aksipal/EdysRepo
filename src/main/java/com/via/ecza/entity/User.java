@@ -91,6 +91,11 @@ public class User implements Serializable {
     @Column(name="status")
     private int status;
 
+    //true ise silinmiş kullanıcı
+    //false ise aktif kullanıcı
+    @Column(name="is_deleted", nullable = true)
+    private Boolean isDeleted;
+
     @Transient
     private String token;
 }

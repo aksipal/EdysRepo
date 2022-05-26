@@ -68,6 +68,12 @@ public class LoginApi {
 
 
 			// **** ekleme yapıldı ****
+
+			//silinmiş kullanıcı var ise uyarı verilsin
+			if(user.getIsDeleted()!=null && user.getIsDeleted()==true){
+				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("UNAUTHORIZED");
+			}
+
 			//yetki eczacı değil ise reddedilsin
 			if(user.getRole()!=Role.PHARMACY){
 				return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("UNAUTHORIZED");
